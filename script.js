@@ -1,27 +1,33 @@
   // Mobile menu functionality
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenu = document.getElementById("mobile-menu");
+  const openMenuBtn = document.getElementById("mobile-menu-button");
+  const closeMenuBtn = document.getElementById("close-menu-button");
   const popupModal = document.getElementById('popup-modal');
   const closePopup = document.getElementById('close-popup');
   const popupCancel = document.getElementById('popup-cancel');
   const popupForm = document.getElementById('popup-form');
 
   // Mobile menu toggle
-  mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+   openMenuBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("hidden");
   });
 
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-          mobileMenu.classList.remove('open');
-      }
+  closeMenuBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("hidden");
   });
 
+
+
+  document.querySelectorAll("#mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+  
 //   Show popup after 3 seconds
-  setTimeout(() => {
-      popupModal.classList.remove('hidden');
-  }, 3000);
+  // setTimeout(() => {
+  //     popupModal.classList.remove('hidden');
+  // }, 3000);
 
   // Close popup functionality
   closePopup.addEventListener('click', () => {
